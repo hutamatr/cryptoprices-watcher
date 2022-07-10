@@ -1,14 +1,18 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/header/Header";
-import CoinData from "./components/crypto/CoinData";
+import Layout from "./components/layout/Layout";
+import CoinData from "./pages/CoinData";
+import About from "./pages/About";
 
 function App() {
   return (
-    <Fragment>
-      <Header />
-      <CoinData />
-    </Fragment>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<CoinData />} />
+        <Route path="about" element={<About />} />
+      </Routes>
+    </Layout>
   );
 }
 

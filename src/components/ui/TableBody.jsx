@@ -2,23 +2,27 @@ import React from "react";
 
 import { formatPriceChange, formatCurrency } from "../../utils/utils";
 
-const TableBody = (props) => {
-  const {
-    item: {
-      image,
-      symbol,
-      current_price,
-      market_cap_rank,
-      price_change_percentage_24h,
-      market_cap,
-      name,
-    },
-  } = props;
-
-  console.log(price_change_percentage_24h);
-
-  const [formattedPriceChange24, priceChangeColor24] = formatPriceChange(
-    price_change_percentage_24h
+const TableBody = ({
+  item: {
+    image,
+    symbol,
+    current_price,
+    market_cap_rank,
+    price_change_percentage_1h_in_currency,
+    price_change_percentage_24h_in_currency,
+    price_change_percentage_7d_in_currency,
+    market_cap,
+    name,
+  },
+}) => {
+  const [formattedPriceChange1h, priceChangeColor1h] = formatPriceChange(
+    price_change_percentage_1h_in_currency
+  );
+  const [formattedPriceChange24h, priceChangeColor24h] = formatPriceChange(
+    price_change_percentage_24h_in_currency
+  );
+  const [formattedPriceChange7d, priceChangeColor7d] = formatPriceChange(
+    price_change_percentage_7d_in_currency
   );
   return (
     <tr>
@@ -36,8 +40,18 @@ const TableBody = (props) => {
       <td></td>
       <td>IDR {formatCurrency(current_price)}</td>
       <td>
-        <span className={`font-medium ${priceChangeColor24}`}>
-          {formattedPriceChange24}
+        <span className={`font-medium ${priceChangeColor1h}`}>
+          {formattedPriceChange1h}
+        </span>
+      </td>
+      <td>
+        <span className={`font-medium ${priceChangeColor24h}`}>
+          {formattedPriceChange24h}
+        </span>
+      </td>
+      <td>
+        <span className={`font-medium ${priceChangeColor7d}`}>
+          {formattedPriceChange7d}
         </span>
       </td>
       <td>IDR {formatCurrency(market_cap)}</td>
