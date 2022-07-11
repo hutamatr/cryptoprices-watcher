@@ -7,28 +7,38 @@ import Error from "../components/ui/Error";
 const CoinData = () => {
   const [coinData, setCoinData] = useState([]);
 
-  const { requestData, error, isLoadingNow } = useHttp();
+  const {
+    requestData: requestCoinData,
+    error: errorCoinData,
+    isLoadingNow: isLoadingCoinData,
+  } = useHttp();
 
   useEffect(() => {
     const coinDataFunc = (coins) => {
       setCoinData(coins);
     };
-    requestData(coinDataFunc);
-  }, [requestData]);
+    requestCoinData(
+      {
+        method: "get",
+        url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d",
+      },
+      coinDataFunc
+    );
+  }, [requestCoinData]);
 
   return (
-    <Fragment>
-      {error.isError ? (
-        <Error message={error.message} />
+    <>
+      {errorCoinData.isError ? (
+        <Error message={errorCoinData.message} />
       ) : (
-        <Fragment>
-          <h1 className="my-8 px-4 text-center text-2xl font-semibold lg:text-3xl">
+        <>
+          <h1 className="my-8 px-4 text-center text-2xl font-semibold md:text-3xl">
             Cryptocurrency Prices by Market Cap
           </h1>
-          <CoinTable itemsList={coinData} onLoading={isLoadingNow} />
-        </Fragment>
+          <CoinTable itemsList={coinData} onLoading={isLoadingCoinData} />
+        </>
       )}
-    </Fragment>
+    </>
   );
 };
 

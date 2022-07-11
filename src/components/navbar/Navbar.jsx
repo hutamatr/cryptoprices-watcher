@@ -5,7 +5,7 @@ import Coin from "../../assets/currency_bitcoin_black_24dp.svg";
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 z-20 flex flex-row items-center justify-between bg-base-100 py-3 px-4 md:px-8">
+    <nav className="flex flex-row items-center justify-between bg-base-100 py-3 px-4 md:px-8">
       <div className="flex flex-row items-center gap-x-2">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost md:hidden">
@@ -31,6 +31,9 @@ const Navbar = () => {
             <NavLink to={"/"} className="btn btn-ghost justify-start">
               Coin
             </NavLink>
+            <NavLink to={"news"} className="btn btn-ghost justify-start">
+              News
+            </NavLink>
             <NavLink to={"about"} className="btn btn-ghost justify-start">
               About
             </NavLink>
@@ -48,6 +51,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal flex flex-row gap-x-6">
           <NavLink to={"/"} className="btn btn-ghost">
             Coin
+          </NavLink>
+          <NavLink to={"news"} className="btn btn-ghost">
+            News
           </NavLink>
           <NavLink to={"about"} className="btn btn-ghost">
             About

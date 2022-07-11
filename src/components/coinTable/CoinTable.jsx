@@ -1,5 +1,6 @@
 import React from "react";
 
+import Loading from "../ui/Loading";
 import CoinTableBody from "./CoinTableBody";
 
 const CoinTable = ({ itemsList, onLoading }) => {
@@ -7,7 +8,7 @@ const CoinTable = ({ itemsList, onLoading }) => {
     <div class="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-md">
       <div className="mx-auto my-8 max-w-screen-xl overflow-x-auto">
         {onLoading.isLoading ? (
-          <p className="text-center text-xl font-medium">{onLoading.text}</p>
+          <Loading text={onLoading.text} />
         ) : (
           <table className="table w-full">
             <thead>

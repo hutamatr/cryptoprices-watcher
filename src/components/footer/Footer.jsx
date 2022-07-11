@@ -4,8 +4,17 @@ import { Link } from "react-router-dom";
 import Love from "../../assets/favorite_black_24dp.svg";
 import Twitter from "../../assets/twitter_logo.svg";
 import LinkedIn from "../../assets/linkedin.png";
+import Github from "../../assets/github.png";
 
 const Footer = () => {
+  const socialMedia = (link, img) => {
+    return (
+      <a href={link} target={"_blank"} rel="noreferrer">
+        <img src={img} alt="" className="w-6" />
+      </a>
+    );
+  };
+
   return (
     <footer className="footer footer-center rounded bg-base-200 p-10 text-base-content">
       <div className="grid grid-flow-col gap-4">
@@ -17,21 +26,13 @@ const Footer = () => {
         </Link>
       </div>
       <div>
-        <div className="grid grid-flow-col gap-4">
-          <a
-            href="https://twitter.com/huutamatr"
-            target={"_blank"}
-            rel="noreferrer"
-          >
-            <img src={Twitter} alt="" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/hutama-trirahmanto/"
-            target={"_blank"}
-            rel="noreferrer"
-          >
-            <img src={LinkedIn} alt="" className="w-6" />
-          </a>
+        <div className="grid grid-flow-col gap-5">
+          {socialMedia("https://twitter.com/huutamatr", Twitter)}
+          {socialMedia(
+            "https://www.linkedin.com/in/hutama-trirahmanto/",
+            LinkedIn
+          )}
+          {socialMedia("https://github.com/hutamatr", Github)}
         </div>
       </div>
       <div>
