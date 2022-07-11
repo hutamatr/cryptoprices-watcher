@@ -2,7 +2,7 @@ import React from "react";
 
 import { formatPriceChange, formatCurrency } from "../../utils/utils";
 
-const TableBody = ({
+const CoinTableBody = ({
   item: {
     image,
     symbol,
@@ -59,4 +59,4 @@ const TableBody = ({
   );
 };
 
-export default TableBody;
+export default CoinTableBody;
