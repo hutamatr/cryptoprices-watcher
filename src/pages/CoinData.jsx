@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import CoinTable from "../components/coinTable/CoinTable";
 import useHttp from "../hooks/use-http";
@@ -27,18 +27,19 @@ const CoinData = () => {
   }, [requestCoinData]);
 
   return (
-    <>
+    <section className="min-h-[80vh]">
+      <h1
+        className="my-8 px-4 text-center text-2xl font-semibold md:text-3xl"
+        id="coin-data"
+      >
+        Cryptocurrency Prices by Market Cap
+      </h1>
       {errorCoinData.isError ? (
         <Error message={errorCoinData.message} />
       ) : (
-        <>
-          <h1 className="my-8 px-4 text-center text-2xl font-semibold md:text-3xl">
-            Cryptocurrency Prices by Market Cap
-          </h1>
-          <CoinTable itemsList={coinData} onLoading={isLoadingCoinData} />
-        </>
+        <CoinTable itemsList={coinData} onLoading={isLoadingCoinData} />
       )}
-    </>
+    </section>
   );
 };
 

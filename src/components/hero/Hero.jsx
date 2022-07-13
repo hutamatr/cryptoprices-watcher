@@ -8,12 +8,16 @@ import NewsImage from "../../assets/Search.svg";
 const Hero = () => {
   const { pathname } = useLocation();
 
-  const headerDesc = (title, desc) => {
+  const headerDesc = (title, desc, id) => {
     return (
       <div className="flex flex-col items-start gap-y-5 lg:max-w-[50%]">
         <h1 className="text-4xl font-bold lg:text-6xl">{title}</h1>
         <p className="text-md lg:max-w-[40vw] lg:text-lg">{desc}</p>
-        <button className="btn btn-primary">Get Started</button>
+        <a href={`#${id}`}>
+          <button className="btn btn-primary shadow-material-shadow">
+            Get Started
+          </button>
+        </a>
       </div>
     );
   };
@@ -23,21 +27,24 @@ const Hero = () => {
       <>
         {headerDesc(
           "Coin Watch",
-          "Find the best price to buy/sell some of the top cryptocurrencies at the biggest crypto exchanges"
+          "Find the best price to buy/sell some of the top cryptocurrencies at the biggest crypto exchanges",
+          "coin-data"
         )}
       </>
     ) : pathname === "/news" ? (
       <>
         {headerDesc(
           "Daily News",
-          "Find the latest news about cryptocurrencies from the biggest crypto portal news"
+          "Find the latest news about cryptocurrencies from the biggest crypto portal news",
+          "news-data"
         )}
       </>
     ) : (
       <>
         {headerDesc(
           "About",
-          "Find the best price to buy/sell some of the top cryptocurrencies at the biggest crypto exchanges"
+          "Coin Watch is a web application that displays crypto prices and news.",
+          "about-data"
         )}
       </>
     );

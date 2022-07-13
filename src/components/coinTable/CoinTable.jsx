@@ -5,7 +5,7 @@ import CoinTableBody from "./CoinTableBody";
 
 const CoinTable = ({ itemsList, onLoading }) => {
   return (
-    <div class="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-md">
+    <div className="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-material-shadow">
       <div className="mx-auto my-8 max-w-screen-xl overflow-x-auto">
         {onLoading.isLoading ? (
           <Loading text={onLoading.text} />

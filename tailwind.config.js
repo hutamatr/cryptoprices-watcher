@@ -2,29 +2,34 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        "material-shadow":
+          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+      },
+    },
   },
   daisyui: {
     themes: [
       {
         mytheme: {
-          primary: "#db628e",
+          primary: "#D1C1D7",
 
-          secondary: "#edf767",
+          secondary: "#F6CBD1",
 
-          accent: "#a12fed",
+          accent: "#B4E9D6",
 
-          neutral: "#1E1221",
+          neutral: "#70ACC7",
 
-          "base-100": "#ECF1F3",
+          "base-100": "#F9F9F9",
 
-          info: "#1D58ED",
+          info: "#3ABFF8",
 
-          success: "#148060",
+          success: "#36D399",
 
-          warning: "#C56F0D",
+          warning: "#FBBD23",
 
-          error: "#ED7668",
+          error: "#F87272",
         },
       },
     ],

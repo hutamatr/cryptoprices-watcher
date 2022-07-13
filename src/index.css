@@ -4,12 +4,16 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }
 
 .loading--animation {
-  -webkit-text-stroke: 1px #ecf1f3;
+  -webkit-text-stroke: 1px #b4e9d6;
 }
 
 .loading--animation::before {
@@ -19,9 +23,9 @@ body {
   left: 0;
   width: 0;
   height: 100%;
-  color: #1d58ed;
-  -webkit-text-stroke: 0 #ecf1f3;
-  border-right: 1px solid #1d58ed;
+  color: #3abff8;
+  -webkit-text-stroke: 0 #b4e9d6;
+  border-right: 1px solid #3abff8;
   overflow: hidden;
   animation: swipe 0.6s linear alternate infinite;
 }

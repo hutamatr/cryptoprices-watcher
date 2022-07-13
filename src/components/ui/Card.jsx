@@ -1,17 +1,19 @@
 import React from "react";
 
-const Card = ({ title, desc, img, link }) => {
+const Card = ({ title, author, link, date }) => {
+  const newDate = new Date(date).toLocaleString();
+
   return (
-    <div class="card image-full max-w-sm bg-base-100 shadow-md">
-      <figure>
-        <img src={img} alt={title} />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">{title}</h2>
-        <p>{desc}</p>
-        <div class="card-actions justify-end">
+    <div className="card w-full bg-base-100 shadow-material-shadow lg:w-1/2">
+      <div className="card-body">
+        <h2 className="card-title text-2xl">{title}</h2>
+        <span className="text-xs">{newDate}</span>
+        <span className="text-sm">Author: {author}</span>
+        <div className="card-actions justify-end">
           <a href={link} target="_blank" rel="noreferrer">
-            <button class="btn btn-primary">Read More...</button>
+            <button className="btn btn-primary shadow-material-shadow">
+              Read more...
+            </button>
           </a>
         </div>
       </div>

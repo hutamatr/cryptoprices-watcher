@@ -24,6 +24,7 @@ const CoinTableBody = ({
   const [formattedPriceChange7d, priceChangeColor7d] = formatPriceChange(
     price_change_percentage_7d_in_currency
   );
+
   return (
     <tr>
       <th>{market_cap_rank}</th>

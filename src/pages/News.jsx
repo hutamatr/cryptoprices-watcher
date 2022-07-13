@@ -18,35 +18,32 @@ const News = () => {
 
   useEffect(() => {
     const newsDataFunc = (news) => {
-      setNewsData(news);
+      setNewsData(news.data);
     };
 
     requestNewsData(
       {
         method: "get",
-        url: "https://crypto-news14.p.rapidapi.com/news/cointelegraph",
-        headers: {
-          "X-RapidAPI-Key":
-            "a53514e7damshc76c3f2908a577fp118200jsnc449175e8570",
-          "X-RapidAPI-Host": "crypto-news14.p.rapidapi.com",
-        },
+        url: "https://data.messari.io/api/v1/news",
       },
       newsDataFunc
     );
   }, [requestNewsData]);
 
+  console.log(newsData);
+
   const newsContent = isLoadingNewsData.isLoading ? (
     <Loading text={isLoadingNewsData.text} />
   ) : (
-    <div className="mx-auto grid grid-rows-1 justify-items-center gap-4 px-6 py-8 md:grid-cols-2 lg:grid-cols-3">
-      {newsData.map((data, index) => {
+    <div className="max-auto grid justify-items-center gap-y-4 px-6 py-8 md:grid-cols-1">
+      {newsData.map((data) => {
         return (
           <Card
             title={data.title}
-            desc={data.desc}
-            img={data.image}
+            author={data.author.name}
             link={data.url}
-            key={index}
+            date={data.published_at}
+            key={data.id}
           />
         );
       })}
@@ -54,7 +51,7 @@ const News = () => {
   );
 
   return (
-    <section className="min-h-[80vh]">
+    <section className="min-h-[80vh]" id="news-data">
       <h1 className="my-8 px-4 text-center text-2xl font-semibold md:text-3xl">
         News
       </h1>

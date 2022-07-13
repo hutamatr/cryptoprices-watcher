@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 import Love from "../../assets/favorite_black_24dp.svg";
 import Twitter from "../../assets/twitter_logo.svg";
-import LinkedIn from "../../assets/linkedin.png";
-import Github from "../../assets/github.png";
+import LinkedIn from "../../assets/linkedin.webp";
+import Github from "../../assets/github.webp";
 
 const Footer = () => {
   const socialMedia = (link, img) => {
     return (
-      <a href={link} target={"_blank"} rel="noreferrer">
+      <a href={link} target="_blank" rel="noreferrer">
         <img src={img} alt="" className="w-6" />
       </a>
     );
