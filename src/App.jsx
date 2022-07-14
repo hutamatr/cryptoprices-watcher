@@ -5,6 +5,7 @@ import Layout from "./components/layout/Layout";
 import CoinData from "./pages/CoinData";
 import News from "./pages/News";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<CoinData />} />
         <Route path="news" element={<News />} />
         <Route path="about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
   );

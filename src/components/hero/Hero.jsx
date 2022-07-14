@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import headerImage from "../../assets/header-2.svg";
 import AboutImage from "../../assets/About-us.svg";
 import NewsImage from "../../assets/Search.svg";
+import NotFoundImage from "../../assets/404-Error-Page.svg";
 
 const Hero = () => {
   const { pathname } = useLocation();
@@ -39,12 +40,20 @@ const Hero = () => {
           "news-data"
         )}
       </>
-    ) : (
+    ) : pathname === "/about" ? (
       <>
         {headerDesc(
           "About",
           "Coin Watch is a web application that displays crypto prices and news.",
           "about-data"
+        )}
+      </>
+    ) : (
+      <>
+        {headerDesc(
+          "Not Found",
+          "The page you visited was not found, please return to the home or previous page",
+          "not-found"
         )}
       </>
     );
@@ -58,7 +67,9 @@ const Hero = () => {
               ? headerImage
               : pathname === "/news"
               ? NewsImage
-              : AboutImage
+              : pathname === "/about"
+              ? AboutImage
+              : NotFoundImage
           }
           alt=""
           className="md:max-w-sm lg:max-w-[50%]"

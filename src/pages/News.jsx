@@ -14,8 +14,6 @@ const News = () => {
     isLoadingNow: isLoadingNewsData,
   } = useHttp();
 
-  console.log(newsData);
-
   useEffect(() => {
     const newsDataFunc = (news) => {
       setNewsData(news.data);
@@ -28,9 +26,8 @@ const News = () => {
       },
       newsDataFunc
     );
+    window.scrollTo({ behavior: "smooth", top: 0 });
   }, [requestNewsData]);
-
-  console.log(newsData);
 
   const newsContent = isLoadingNewsData.isLoading ? (
     <Loading text={isLoadingNewsData.text} />

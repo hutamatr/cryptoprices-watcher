@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import CoinGecko from "../assets/coin-gecko.webp";
 import Messari from "../assets/Messari.webp";
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo({ behavior: "smooth", top: 0 });
+  }, []);
+
   const aboutObj = [
     {
       image: CoinGecko,

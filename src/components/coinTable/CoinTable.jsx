@@ -1,9 +1,9 @@
 import React from "react";
 
-import Loading from "../ui/Loading";
 import CoinTableBody from "./CoinTableBody";
+import Loading from "../ui/Loading";
 
-const CoinTable = ({ itemsList, onLoading }) => {
+const CoinTable = ({ onLoading, onPaginationData }) => {
   return (
     <div className="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-material-shadow">
       <div className="mx-auto my-8 max-w-screen-xl overflow-x-auto">
@@ -26,7 +26,7 @@ const CoinTable = ({ itemsList, onLoading }) => {
               </tr>
             </thead>
             <tbody>
-              {itemsList.map((item) => {
+              {onPaginationData().map((item) => {
                 return <CoinTableBody item={item} key={item.id} />;
               })}
             </tbody>

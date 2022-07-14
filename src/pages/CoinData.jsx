@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import CoinTable from "../components/coinTable/CoinTable";
 import useHttp from "../hooks/use-http";
 import Error from "../components/ui/Error";
+import Pagination from "../components/pagination/Pagination";
 
 const CoinData = () => {
   const [coinData, setCoinData] = useState([]);
@@ -20,7 +20,7 @@ const CoinData = () => {
     requestCoinData(
       {
         method: "get",
-        url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d",
+        url: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=idr&order=market_cap_desc&per_page=250&sparkline=true&price_change_percentage=1h%2C24h%2C7d",
       },
       coinDataFunc
     );
@@ -37,7 +37,12 @@ const CoinData = () => {
       {errorCoinData.isError ? (
         <Error message={errorCoinData.message} />
       ) : (
-        <CoinTable itemsList={coinData} onLoading={isLoadingCoinData} />
+        <Pagination
+          data={coinData}
+          onLoading={isLoadingCoinData}
+          pageLimit={4}
+          dataLimit={20}
+        />
       )}
     </section>
   );
