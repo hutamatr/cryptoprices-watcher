@@ -1,13 +1,14 @@
 import React from "react";
 
-import TableBody from "./TableBody";
+import CoinTableBody from "./CoinTableBody";
+import Loading from "../ui/Loading";
 
-const Table = ({ itemsList, onLoading }) => {
+const CoinTable = ({ onLoading, onPaginationData }) => {
   return (
-    <div class="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-md">
+    <div className="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-material-shadow">
       <div className="mx-auto my-8 max-w-screen-xl overflow-x-auto">
         {onLoading.isLoading ? (
-          <p className="text-center text-xl font-medium">{onLoading.text}</p>
+          <Loading text={onLoading.text} />
         ) : (
           <table className="table w-full">
             <thead>
@@ -25,8 +26,8 @@ const Table = ({ itemsList, onLoading }) => {
               </tr>
             </thead>
             <tbody>
-              {itemsList.map((item) => {
-                return <TableBody item={item} key={item.id} />;
+              {onPaginationData().map((item) => {
+                return <CoinTableBody item={item} key={item.id} />;
               })}
             </tbody>
           </table>
@@ -36,4 +37,4 @@ const Table = ({ itemsList, onLoading }) => {
   );
 };
 
-export default Table;
+export default CoinTable;

@@ -1,25 +1,80 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 import headerImage from "../../assets/header-2.svg";
+import AboutImage from "../../assets/About-us.svg";
+import NewsImage from "../../assets/Search.svg";
+import NotFoundImage from "../../assets/404-Error-Page.svg";
 
 const Hero = () => {
+  const { pathname } = useLocation();
+
+  const headerDesc = (title, desc, id) => {
+    return (
+      <div className="flex flex-col items-start gap-y-5 lg:max-w-[50%]">
+        <h1 className="text-4xl font-bold lg:text-6xl">{title}</h1>
+        <p className="text-md lg:max-w-[40vw] lg:text-lg">{desc}</p>
+        <a href={`#${id}`}>
+          <button className="btn btn-primary shadow-material-shadow">
+            Get Started
+          </button>
+        </a>
+      </div>
+    );
+  };
+
+  const headerContent =
+    pathname === "/" ? (
+      <>
+        {headerDesc(
+          "Coin Watch",
+          "Find the best price to buy/sell some of the top cryptocurrencies at the biggest crypto exchanges",
+          "coin-data"
+        )}
+      </>
+    ) : pathname === "/news" ? (
+      <>
+        {headerDesc(
+          "Daily News",
+          "Find the latest news about cryptocurrencies from the biggest crypto portal news",
+          "news-data"
+        )}
+      </>
+    ) : pathname === "/about" ? (
+      <>
+        {headerDesc(
+          "About",
+          "Coin Watch is a web application that displays crypto prices and news.",
+          "about-data"
+        )}
+      </>
+    ) : (
+      <>
+        {headerDesc(
+          "Not Found",
+          "The page you visited was not found, please return to the home or previous page",
+          "not-found"
+        )}
+      </>
+    );
+
   return (
-    <div className="flex min-h-screen min-w-full items-center justify-center bg-base-200 md:min-h-[50vh] lg:min-h-screen">
-      <div className="flex flex-col items-center justify-between gap-y-8 p-8 md:flex-row-reverse  xl:gap-x-16">
+    <div className="min-h-[80vh] bg-base-200 p-6 md:min-h-[40vh] md:p-12 lg:min-h-screen xl:min-h-[90vh]">
+      <div className="flex flex-col items-center justify-center gap-y-8 gap-x-6 md:flex-row-reverse md:gap-y-0 lg:mt-12">
         <img
-          src={headerImage}
+          src={
+            pathname === "/"
+              ? headerImage
+              : pathname === "/news"
+              ? NewsImage
+              : pathname === "/about"
+              ? AboutImage
+              : NotFoundImage
+          }
           alt=""
-          className="min-h-full max-w-sm lg:max-w-2xl 2xl:max-w-5xl"
+          className="md:max-w-sm lg:max-w-[50%]"
         />
-        <div className="">
-          <h1 className="text-5xl font-bold 2xl:text-5xl">Coin Watch</h1>
-          <p className="py-6 2xl:text-xl">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn btn-primary">Get Started</button>
-        </div>
+        {headerContent}
       </div>
     </div>
   );
