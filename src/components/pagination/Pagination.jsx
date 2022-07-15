@@ -10,6 +10,14 @@ const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
     window.scrollTo({ behavior: "smooth", top: 600 });
   }, [currentPage]);
 
+  const firstPageHandler = () => {
+    setCurrentPage(1);
+  };
+
+  const lastPageHandler = () => {
+    setCurrentPage(13);
+  };
+
   const nextPageHandler = () => {
     setCurrentPage((prevState) => prevState + 1);
   };
@@ -43,6 +51,14 @@ const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
 
       <div className="my-6 flex flex-row items-center justify-center gap-x-2">
         <button
+          onClick={firstPageHandler}
+          className={`btn btn-primary btn-sm ${
+            currentPage < 5 ? "btn-disabled" : ""
+          }`}
+        >
+          first
+        </button>
+        <button
           onClick={prevPageHandler}
           className={`btn btn-primary btn-sm ${
             currentPage === 1 ? "btn-disabled" : ""
@@ -56,7 +72,11 @@ const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
             key={index}
             onClick={changePageHandler}
             className={`btn btn-ghost btn-circle btn-sm ${
-              currentPage === item ? "btn-outline" : ""
+              currentPage === item
+                ? "btn-outline"
+                : currentPage > 12
+                ? "hidden"
+                : ""
             }`}
           >
             <span>{item}</span>
@@ -66,10 +86,18 @@ const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
         <button
           onClick={nextPageHandler}
           className={`btn btn-primary btn-sm ${
-            currentPage === pages ? "btn-disabled" : ""
+            currentPage === 13 ? "btn-disabled" : ""
           }`}
         >
           next
+        </button>
+        <button
+          onClick={lastPageHandler}
+          className={`btn btn-primary btn-sm ${
+            currentPage === 13 ? "btn-disabled" : ""
+          }`}
+        >
+          last
         </button>
       </div>
     </>
