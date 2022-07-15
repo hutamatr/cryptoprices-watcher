@@ -12,31 +12,6 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.loading--animation {
-  -webkit-text-stroke: 1px #b4e9d6;
-}
-
-.loading--animation::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  color: #3abff8;
-  -webkit-text-stroke: 0 #b4e9d6;
-  border-right: 1px solid #3abff8;
-  overflow: hidden;
-  animation: swipe 0.6s linear alternate infinite;
-}
-
-@keyframes swipe {
-  0% {
-    width: 0;
-  }
-
-  90%,
-  100% {
-    width: 100%;
-  }
+.animation-delay {
+  animation-delay: 0.6s;
 }

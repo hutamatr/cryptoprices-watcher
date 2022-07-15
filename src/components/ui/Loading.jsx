@@ -1,13 +1,20 @@
 import React from "react";
 
-const Loading = ({ text }) => {
+const Loading = () => {
+  let animation = [];
+  for (let i = 0; i < 5; i++) {
+    animation.push(
+      <li
+        className={`mx-1 w-2 animate-[loading_0.6s_infinite_alternate] rounded-2xl bg-neutral ${
+          i % 2 === 1 ? "animation-delay h-16" : "h-5"
+        }`}
+      ></li>
+    );
+  }
   return (
-    <h1
-      data-text={text}
-      className="loading--animation relative mx-auto my-[10vh] max-w-fit text-xl font-bold text-[#fffaf0]"
-    >
-      {text}
-    </h1>
+    <div class="mx-auto flex h-12 max-w-fit items-center justify-center bg-base-100">
+      <ul class="flex items-center">{animation}</ul>
+    </div>
   );
 };
 
