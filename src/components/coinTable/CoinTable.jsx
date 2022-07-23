@@ -1,11 +1,16 @@
 import React from "react";
 
 import CoinTableBody from "./CoinTableBody";
+
 import Loading from "../ui/Loading";
 
 const CoinTable = ({ onLoading, onPaginationData }) => {
   return (
     <div className="mockup-window mx-4 my-6 max-w-full border border-base-300 shadow-material-shadow">
+      {/* <label for="my-modal-6" className="modal-button btn">
+        open modal
+      </label> */}
+
       <div className="mx-auto my-8 max-w-screen-xl overflow-x-auto">
         {onLoading.isLoading ? (
           <Loading text={onLoading.text} />

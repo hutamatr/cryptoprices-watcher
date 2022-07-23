@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import CoinTable from "../coinTable/CoinTable";
 
+import NextImage from "../../assets/next.webp";
+import PrevImage from "../../assets/prev.webp";
+
 const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
   const [pages] = useState(Math.round(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,19 +55,25 @@ const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
       <div className="my-6 flex flex-row items-center justify-center gap-x-2">
         <button
           onClick={firstPageHandler}
-          className={`btn btn-primary btn-sm ${
-            currentPage < 5 ? "btn-disabled" : ""
+          className={`btn btn-primary btn-xs text-xs ${
+            currentPage < 5 ? "hidden" : ""
           }`}
         >
           first
         </button>
-        <button
+        {/*  <button
           onClick={prevPageHandler}
           className={`btn btn-primary btn-sm ${
             currentPage === 1 ? "btn-disabled" : ""
           }`}
         >
           prev
+        </button> */}
+        <button
+          onClick={prevPageHandler}
+          className={`hover:bg-primary ${currentPage === 1 ? "hidden" : ""}`}
+        >
+          <img src={PrevImage} alt="" className="max-w-[1.25rem]" />
         </button>
 
         {getPaginationGroupHandler().map((item, index) => (
@@ -83,18 +92,26 @@ const Pagination = ({ data, pageLimit, dataLimit, onLoading }) => {
           </button>
         ))}
 
-        <button
+        {/* <button
           onClick={nextPageHandler}
           className={`btn btn-primary btn-sm ${
             currentPage === 13 ? "btn-disabled" : ""
           }`}
         >
           next
+        </button> */}
+
+        <button
+          onClick={nextPageHandler}
+          className={`hover:bg-primary ${currentPage === 13 ? "hidden" : ""}`}
+        >
+          <img src={NextImage} alt="" className="max-w-[1.25rem]" />
         </button>
+
         <button
           onClick={lastPageHandler}
-          className={`btn btn-primary btn-sm ${
-            currentPage === 13 ? "btn-disabled" : ""
+          className={`btn btn-primary btn-xs text-xs ${
+            currentPage === pages ? "hidden" : ""
           }`}
         >
           last
