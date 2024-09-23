@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Love from "../../assets/favorite_black_24dp.svg";
-import Twitter from "../../assets/twitter_logo.svg";
-import LinkedIn from "../../assets/linkedin.webp";
 import Github from "../../assets/github.webp";
 
 const Footer = () => {
@@ -27,11 +25,6 @@ const Footer = () => {
       </div>
       <div>
         <div className="grid grid-flow-col gap-5">
-          {socialMedia("https://twitter.com/huutamatr", Twitter)}
-          {socialMedia(
-            "https://www.linkedin.com/in/hutama-trirahmanto/",
-            LinkedIn
-          )}
           {socialMedia("https://github.com/hutamatr", Github)}
         </div>
       </div>
